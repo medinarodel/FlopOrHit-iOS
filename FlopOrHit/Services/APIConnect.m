@@ -13,16 +13,16 @@
            params:(NSDictionary *)params
  notificationName:(NSString *)notificationName
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:url
       parameters:params
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         success:^(NSURLSessionDataTask *operation, id responseObject) {
              NSLog(@"GET SUCCESS for %@", url);
              [ [NSNotificationCenter defaultCenter] postNotificationName:notificationName
                                                                   object:nil
                                                                 userInfo:responseObject ];
              
-         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         } failure:^(NSURLSessionDataTask *operation, NSError *error) {
              NSLog(@"GET ERROR for %@", url);
              [ [NSNotificationCenter defaultCenter] postNotificationName:notificationName
                                                                   object:nil ];
@@ -34,16 +34,16 @@
             params:(NSDictionary *)params
   notificationName:(NSString *)notificationName
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:url
        parameters:params
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          success:^(NSURLSessionDataTask *operation, id responseObject) {
              NSLog(@"POST SUCCESS for %@", url);
              [ [NSNotificationCenter defaultCenter] postNotificationName:notificationName
                                                                   object:nil
                                                                 userInfo:responseObject ];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
             NSLog(@"POST ERROR for %@", url);
             [ [NSNotificationCenter defaultCenter] postNotificationName:notificationName
                                                                  object:nil ];

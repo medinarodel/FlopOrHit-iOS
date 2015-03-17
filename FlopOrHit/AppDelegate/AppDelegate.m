@@ -153,9 +153,9 @@
     return _leaderBoardViewController;
 }
 
-- (LeaderBoardViewController *)menuViewController {
+- (MoreViewController *)menuViewController {
     if(!_menuViewController) {
-        _menuViewController = [[LeaderBoardViewController alloc] init];
+        _menuViewController = [[MoreViewController alloc] init];
         _menuViewController.title = @"Menu";
     }
     return _menuViewController;

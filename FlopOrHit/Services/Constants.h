@@ -34,3 +34,14 @@
 #define NOTIF_MODEL_GET_PHOTOS      @"modelGetPhotos"
 #define NOTIF_GET_PHOTOS_SUCCESS    @"successGetPhotos"
 #define NOTIF_GET_PHOTOS_FAILED     @"failedGetPhotos"
+
+
+/*
+	|--------------------------------------------------------------------------
+	| API URLs
+	|--------------------------------------------------------------------------
+	*/
+
+#define API_DOMAIN                     @"http://localhost:3000"
+
+#define API_FEEDS                      @"/visits"

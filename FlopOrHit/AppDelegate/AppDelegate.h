@@ -10,10 +10,11 @@
 #import "Constants.h"
 
 #pragma mark - tabbar
-#import "HomeViewController.h"
 #import "BetsViewController.h"
-#import "UsersViewController.h"
+#import "HomeViewController.h"
 #import "LeaderBoardViewController.h"
+#import "UsersViewController.h"
+#import "MoreViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 
@@ -35,6 +36,6 @@
 @property (strong, nonatomic) LeaderBoardViewController *leaderBoardViewController;
 
 @property (strong, nonatomic) UINavigationController *menuNavigationController;
-@property (strong, nonatomic) LeaderBoardViewController *menuViewController;
+@property (strong, nonatomic) MoreViewController *menuViewController;
 @end
 

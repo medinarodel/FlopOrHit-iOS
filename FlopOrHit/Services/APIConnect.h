@@ -11,11 +11,11 @@
 
 @interface APIConnect : NSObject
 
-+(void)getRequest:(NSString *)url
++(void)getRequest:(NSString *)path
            params:(NSDictionary *)params
  notificationName:(NSString *)notificationName;
 
-+(void)postRequest:(NSString *)url
++(void)postRequest:(NSString *)path
             params:(NSDictionary *)params
   notificationName:(NSString *)notificationName;
 

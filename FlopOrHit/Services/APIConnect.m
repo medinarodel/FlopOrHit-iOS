@@ -7,46 +7,52 @@
 //
 
 #import "APIConnect.h"
+#import "Constants.h"
 
 @implementation APIConnect
-+(void)getRequest:(NSString *)url
++ (AFHTTPSessionManager *)manager
+{
+    NSURL *baseURL = [NSURL URLWithString:API_DOMAIN];
+    AFHTTPSessionManager *mngr = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    return mngr;
+}
+
++(void)getRequest:(NSString *)path
            params:(NSDictionary *)params
  notificationName:(NSString *)notificationName
 {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:url
-      parameters:params
-         success:^(NSURLSessionDataTask *operation, id responseObject) {
-             NSLog(@"GET SUCCESS for %@", url);
-             [ [NSNotificationCenter defaultCenter] postNotificationName:notificationName
-                                                                  object:nil
-                                                                userInfo:responseObject ];
+    [ [self manager] GET:path
+              parameters:params
+                 success:^(NSURLSessionDataTask *operation, id responseObject) {
+                     NSLog(@"GET SUCCESS for %@", path);
+                     [ [NSNotificationCenter defaultCenter] postNotificationName:notificationName
+                                                                          object:nil
+                                                                        userInfo:responseObject ];
              
          } failure:^(NSURLSessionDataTask *operation, NSError *error) {
-             NSLog(@"GET ERROR for %@", url);
+             NSLog(@"GET ERROR for %@", path);
              [ [NSNotificationCenter defaultCenter] postNotificationName:notificationName
                                                                   object:nil ];
          }];
 }
 
 
-+(void)postRequest:(NSString *)url
++(void)postRequest:(NSString *)path
             params:(NSDictionary *)params
   notificationName:(NSString *)notificationName
 {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:url
-       parameters:params
-          success:^(NSURLSessionDataTask *operation, id responseObject) {
-             NSLog(@"POST SUCCESS for %@", url);
-             [ [NSNotificationCenter defaultCenter] postNotificationName:notificationName
-                                                                  object:nil
-                                                                userInfo:responseObject ];
-        
-    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
-            NSLog(@"POST ERROR for %@", url);
-            [ [NSNotificationCenter defaultCenter] postNotificationName:notificationName
-                                                                 object:nil ];
-    }];
+    [ [self manager] POST:path
+              parameters:params
+                 success:^(NSURLSessionDataTask *operation, id responseObject) {
+                     NSLog(@"POST SUCCESS for %@", path);
+                     [ [NSNotificationCenter defaultCenter] postNotificationName:notificationName
+                                                                          object:nil
+                                                                        userInfo:responseObject ];
+                     
+                 } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+                     NSLog(@"POST ERROR for %@", path);
+                     [ [NSNotificationCenter defaultCenter] postNotificationName:notificationName
+                                                                          object:nil ];
+                 }];
 }
 @end

@@ -21,7 +21,7 @@
                                                   name:notificationName
                                                 object:nil];
     
-    [APIConnect getRequest:@""
+    [APIConnect getRequest:API_FEEDS
                     params:nil
           notificationName:notificationName];
 }
